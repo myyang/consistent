@@ -109,13 +109,14 @@ func TestConsistentHashing(t *testing.T) {
 
 }
 
+// AddNodes and RemoveNodes is positive to the list of nodes, so we skip testing these methods
 func BenchmarkAddAndRemove(b *testing.B) {
 	b.ReportAllocs()
 	c := NewConsistent()
-	nodes := []string{"n1", "n2", "n3", "n4", "n5", "n6", "n7", "n8", "n9", "n10", "n11", "n12"}
+	node := "Node"
 	for i := 0; i < b.N; i++ {
-		c.AddNodes(nodes)
-		c.RemoveNodes(nodes)
+		c.AddNode(node)
+		c.RemoveNode(node)
 	}
 }
 

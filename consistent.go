@@ -186,7 +186,7 @@ func (c *Consistent) GetNNode(key string, n int) ([]string, error) {
 	if n > c.count {
 		return []string{}, consistentError{Msg: "Query N is greater than total nodes"}
 	}
-	nodes := make([]string, 0)
+	var nodes []string
 	ind, max := c.searchKey(key), c.replicas*c.count-1
 	for len(nodes) < n {
 		if t := c.getNode(ind); !stringInSlice(nodes, t) {
